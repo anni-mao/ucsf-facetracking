@@ -7,18 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2B650C42782832600E440DA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650C32782832600E440DA /* LoginView.swift */; };
+		D2B650C6278412AE00E440DA /* ListPatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650C5278412AE00E440DA /* ListPatientsView.swift */; };
+		D2B650EC2787E31B00E440DA /* StartSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650EB2787E31B00E440DA /* StartSessionView.swift */; };
+		D2CA26792799E9C50087C3D7 /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA26782799E9C50087C3D7 /* Camera-SwiftUI */; };
+		D2CA26B22799F8ED0087C3D7 /* CameraService+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26B12799F8ED0087C3D7 /* CameraService+Extensions.swift */; };
+		D2CA26B42799F90E0087C3D7 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26B32799F90E0087C3D7 /* CameraPreview.swift */; };
+		D2CA26B62799F9310087C3D7 /* CameraService+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26B52799F9310087C3D7 /* CameraService+Enums.swift */; };
+		D2CA26B82799F95B0087C3D7 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26B72799F95B0087C3D7 /* PhotoCaptureProcessor.swift */; };
+		D2CA26BA2799F97C0087C3D7 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26B92799F97C0087C3D7 /* ImageResizer.swift */; };
+		D2CA26BC2799F9940087C3D7 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BB2799F9940087C3D7 /* CameraService.swift */; };
+		D2CA26BE2799F9B80087C3D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BD2799F9B80087C3D7 /* ContentView.swift */; };
 		D2EE7BE9272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */; };
-		D2EE7BEB272A6E9500EFC2D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BEA272A6E9500EFC2D7 /* ContentView.swift */; };
+		D2EE7BEB272A6E9500EFC2D7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */; };
 		D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */; };
 		D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */; };
+		D2EE7BF7272A6EA700EFC2D7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */; };
+		D2EE7BFA272A6EC500EFC2D7 /* ft_database.db in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */; };
+		D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */; };
+		D2EE7C00272BBBE200EFC2D7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */; };
+		D2EE7C042732517D00EFC2D7 /* PatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7C032732517D00EFC2D7 /* PatientView.swift */; };
+		D2EE7C072733B04F00EFC2D7 /* TestFolder Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7C062733B04F00EFC2D7 /* TestFolder Views.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2B650C32782832600E440DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D2B650C5278412AE00E440DA /* ListPatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPatientsView.swift; sourceTree = "<group>"; };
+		D2B650EB2787E31B00E440DA /* StartSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSessionView.swift; sourceTree = "<group>"; };
+		D2CA26B12799F8ED0087C3D7 /* CameraService+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Extensions.swift"; sourceTree = "<group>"; };
+		D2CA26B32799F90E0087C3D7 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		D2CA26B52799F9310087C3D7 /* CameraService+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Enums.swift"; sourceTree = "<group>"; };
+		D2CA26B72799F95B0087C3D7 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
+		D2CA26B92799F97C0087C3D7 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		D2CA26BB2799F9940087C3D7 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		D2CA26BD2799F9B80087C3D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2EE7BE5272A6E9500EFC2D7 /* FaceTrackingApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceTrackingApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingApplicationApp.swift; sourceTree = "<group>"; };
-		D2EE7BEA272A6E9500EFC2D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ft_database.db; sourceTree = "<group>"; };
+		D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ft_database.sql; sourceTree = "<group>"; };
+		D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		D2EE7C032732517D00EFC2D7 /* PatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientView.swift; sourceTree = "<group>"; };
+		D2EE7C062733B04F00EFC2D7 /* TestFolder Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestFolder Views.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +59,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2CA26792799E9C50087C3D7 /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2CA26B02799F8D10087C3D7 /* SwiftCamera */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA26B12799F8ED0087C3D7 /* CameraService+Extensions.swift */,
+				D2CA26B32799F90E0087C3D7 /* CameraPreview.swift */,
+				D2CA26B52799F9310087C3D7 /* CameraService+Enums.swift */,
+				D2CA26B72799F95B0087C3D7 /* PhotoCaptureProcessor.swift */,
+				D2CA26B92799F97C0087C3D7 /* ImageResizer.swift */,
+				D2CA26BB2799F9940087C3D7 /* CameraService.swift */,
+				D2CA26BD2799F9B80087C3D7 /* ContentView.swift */,
+			);
+			path = SwiftCamera;
+			sourceTree = "<group>";
+		};
 		D2EE7BDC272A6E9500EFC2D7 = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */,
-				D2EE7BEA272A6E9500EFC2D7 /* ContentView.swift */,
+				D2EE7C052733B02C00EFC2D7 /* Views */,
+				D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */,
+				D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */,
+				D2CA26B02799F8D10087C3D7 /* SwiftCamera */,
+				D2EE7BFC272A6ECB00EFC2D7 /* Database */,
 				D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */,
 				D2EE7BEE272A6E9700EFC2D7 /* Preview Content */,
 			);
@@ -65,6 +117,28 @@
 				D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2EE7BFC272A6ECB00EFC2D7 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */,
+				D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		D2EE7C052733B02C00EFC2D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */,
+				D2B650EB2787E31B00E440DA /* StartSessionView.swift */,
+				D2B650C5278412AE00E440DA /* ListPatientsView.swift */,
+				D2EE7C032732517D00EFC2D7 /* PatientView.swift */,
+				D2B650C32782832600E440DA /* LoginView.swift */,
+				D2EE7C062733B04F00EFC2D7 /* TestFolder Views.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +157,9 @@
 			dependencies = (
 			);
 			name = FaceTrackingApplication;
+			packageProductDependencies = (
+				D2CA26782799E9C50087C3D7 /* Camera-SwiftUI */,
+			);
 			productName = FaceTrackingApplication;
 			productReference = D2EE7BE5272A6E9500EFC2D7 /* FaceTrackingApplication.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +188,9 @@
 				Base,
 			);
 			mainGroup = D2EE7BDC272A6E9500EFC2D7;
+			packageReferences = (
+				D2CA26772799E9C40087C3D7 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */,
+			);
 			productRefGroup = D2EE7BE6272A6E9500EFC2D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +207,8 @@
 			files = (
 				D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */,
 				D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */,
+				D2EE7BFA272A6EC500EFC2D7 /* ft_database.db in Resources */,
+				D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +219,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2EE7BEB272A6E9500EFC2D7 /* ContentView.swift in Sources */,
+				D2EE7C042732517D00EFC2D7 /* PatientView.swift in Sources */,
+				D2CA26BE2799F9B80087C3D7 /* ContentView.swift in Sources */,
+				D2B650C6278412AE00E440DA /* ListPatientsView.swift in Sources */,
+				D2EE7BEB272A6E9500EFC2D7 /* MainContentView.swift in Sources */,
+				D2EE7C00272BBBE200EFC2D7 /* SearchBar.swift in Sources */,
+				D2CA26B62799F9310087C3D7 /* CameraService+Enums.swift in Sources */,
+				D2CA26B42799F90E0087C3D7 /* CameraPreview.swift in Sources */,
+				D2CA26B82799F95B0087C3D7 /* PhotoCaptureProcessor.swift in Sources */,
+				D2CA26BC2799F9940087C3D7 /* CameraService.swift in Sources */,
+				D2EE7C072733B04F00EFC2D7 /* TestFolder Views.swift in Sources */,
+				D2EE7BF7272A6EA700EFC2D7 /* DBManager.swift in Sources */,
+				D2B650C42782832600E440DA /* LoginView.swift in Sources */,
+				D2B650EC2787E31B00E440DA /* StartSessionView.swift in Sources */,
 				D2EE7BE9272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift in Sources */,
+				D2CA26B22799F8ED0087C3D7 /* CameraService+Extensions.swift in Sources */,
+				D2CA26BA2799F97C0087C3D7 /* ImageResizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +368,7 @@
 				DEVELOPMENT_TEAM = P5DSZ9BLH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos & videos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +398,7 @@
 				DEVELOPMENT_TEAM = P5DSZ9BLH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos & videos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,6 +439,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D2CA26772799E9C40087C3D7 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rorodriguez116/Camera-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D2CA26782799E9C50087C3D7 /* Camera-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2CA26772799E9C40087C3D7 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */;
+			productName = "Camera-SwiftUI";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D2EE7BDD272A6E9500EFC2D7 /* Project object */;
 }
