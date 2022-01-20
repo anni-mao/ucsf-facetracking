@@ -33,7 +33,6 @@ struct MainContentView: View {
                 .tag(1)
 
             CameraView()
-                .frame(height: 300)
                 .tabItem {
                     Image(systemName: "camera.fill")
                     Text("Camera")
