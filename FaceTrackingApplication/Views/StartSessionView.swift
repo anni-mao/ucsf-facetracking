@@ -113,27 +113,32 @@ struct StartSessionView: View {
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
-                Button(action: {
-                    let model:DBManager = DBManager()
-                    // Set Date Format
-//                    dateFormatter.dateFormat = .short
-                    // Convert Date to String
-                    let insertDate = dateFormatter.string(from: date)
-                    model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: "Dummy Exercise", notes: self.notes)
-                    
-                }) {
-                    Text("Create Session")
-                        .font(.title)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 250, height: 60)
-                        .background(Color.blue)
-                        .cornerRadius(15.0)
-                        .offset(x: 230)
-//                        .alignmentGuide(.leading, computedValue: {d in d[.center]})
+                
+                NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
+                    Button(action: {
+                        let model:DBManager = DBManager()
+                        // Set Date Format
+    //                    dateFormatter.dateFormat = .short
+                        // Convert Date to String
+                        let insertDate = dateFormatter.string(from: date)
+                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: "Dummy Exercise", notes: self.notes)
+                       
+                    }) {
+                        Text("Create Session")
+                            .font(.title)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 250, height: 60)
+                            .background(Color.blue)
+                            .cornerRadius(15.0)
+    //                            .offset(x: 230)
+    //                        .alignmentGuide(.leading, computedValue: {d in d[.center]})
+                        
+                    }
                     
                 }
+               
                 
                 
                 

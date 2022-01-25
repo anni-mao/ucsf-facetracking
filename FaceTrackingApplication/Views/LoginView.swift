@@ -5,6 +5,7 @@
 //  Created by Anni Mao on 1/2/22.
 //
 
+//TODO: need to implement login page ("nice to have") 
 import SwiftUI
 
 struct LoginView: View {

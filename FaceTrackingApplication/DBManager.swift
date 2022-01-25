@@ -25,6 +25,7 @@ class DBManager: ObservableObject, Identifiable {
         }
     }
     
+    //TODO fix to retrieve unique IDs
     // retrieving patient IDs for patient ID list 
     func queryDB() -> [String]? {
         var gatheredInfo:[String] = [String]()
@@ -57,8 +58,10 @@ class DBManager: ObservableObject, Identifiable {
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
         
 //        let selectStatementString = "INSERT INTO patients_table (Patient_ID, Exercise_type, Physician_notes, createdate) VALUES (" + patientID + ", " + exerciseType + ", " + notes + ", " + date + ");"
-        let parameters = [patientID, exerciseType, notes, date]
-        let selectStatementString = "INSERT INTO patients_table (Patient_ID, Exercise_type, Physician_notes, createdate) VALUES (?, ?, ?, ?)"
+        let parameters = [patientID, "Image_label", exerciseType, notes, "Program_score", date, "C"]
+      
+        //(Database_index, Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id)
+        let selectStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
         var selectStatementQuery: OpaquePointer?
         
         if db != nil {
@@ -83,9 +86,10 @@ class DBManager: ObservableObject, Identifiable {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("failure inserting hero: \(errmsg)")
                 return
+            } else {
+                print("Successfully inserted into database!")
             }
-            
-            
+            sqlite3_finalize(selectStatementQuery)
         }
     }
 }

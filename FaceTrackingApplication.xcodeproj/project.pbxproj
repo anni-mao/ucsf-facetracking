@@ -19,6 +19,7 @@
 		D2CA26BC2799F9940087C3D7 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BB2799F9940087C3D7 /* CameraService.swift */; };
 		D2CA26BE2799F9B80087C3D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BD2799F9B80087C3D7 /* ContentView.swift */; };
 		D2CA26C0279A095C0087C3D7 /* ImageVideoStorageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BF279A095C0087C3D7 /* ImageVideoStorageSystem.swift */; };
+		D2CA26C2279A3CE10087C3D7 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26C1279A3CE10087C3D7 /* EndSessionView.swift */; };
 		D2EE7BE9272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */; };
 		D2EE7BEB272A6E9500EFC2D7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */; };
 		D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		D2CA26BB2799F9940087C3D7 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
 		D2CA26BD2799F9B80087C3D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2CA26BF279A095C0087C3D7 /* ImageVideoStorageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoStorageSystem.swift; sourceTree = "<group>"; };
+		D2CA26C1279A3CE10087C3D7 /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
 		D2EE7BE5272A6E9500EFC2D7 /* FaceTrackingApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceTrackingApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingApplicationApp.swift; sourceTree = "<group>"; };
 		D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */,
 				D2B650EB2787E31B00E440DA /* StartSessionView.swift */,
+				D2CA26C1279A3CE10087C3D7 /* EndSessionView.swift */,
 				D2B650C5278412AE00E440DA /* ListPatientsView.swift */,
 				D2EE7C032732517D00EFC2D7 /* PatientView.swift */,
 				D2B650C32782832600E440DA /* LoginView.swift */,
@@ -229,6 +232,7 @@
 				D2EE7C00272BBBE200EFC2D7 /* SearchBar.swift in Sources */,
 				D2CA26B62799F9310087C3D7 /* CameraService+Enums.swift in Sources */,
 				D2CA26C0279A095C0087C3D7 /* ImageVideoStorageSystem.swift in Sources */,
+				D2CA26C2279A3CE10087C3D7 /* EndSessionView.swift in Sources */,
 				D2CA26B42799F90E0087C3D7 /* CameraPreview.swift in Sources */,
 				D2CA26B82799F95B0087C3D7 /* PhotoCaptureProcessor.swift in Sources */,
 				D2CA26BC2799F9940087C3D7 /* CameraService.swift in Sources */,
