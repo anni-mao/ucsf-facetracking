@@ -14,6 +14,7 @@ class DBManager: ObservableObject, Identifiable {
     var dbPath:String
     var db: OpaquePointer?
     
+    //Open database connection 
     init() {
         let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
         
@@ -34,11 +35,14 @@ class DBManager: ObservableObject, Identifiable {
         var selectStatementQuery: OpaquePointer?
         
         if db != nil {
+            //prepare_v2 = compiles SQL statement to byte code
             if sqlite3_prepare_v2(db, selectStatementString, -1, &selectStatementQuery, nil) == SQLITE_OK {
+                //step = runs compiled statement
                 while sqlite3_step(selectStatementQuery) == SQLITE_ROW {
                     let data = String(sqlite3_column_int(selectStatementQuery, 0))
                     gatheredInfo.append(data)
                 }
+                //must ALWAYS finalize to delete compiled statement - avoids leaks
                 sqlite3_finalize(selectStatementQuery)
             } else {
                 let error_msg = String(cString: sqlite3_errmsg(db)!)
@@ -61,7 +65,7 @@ class DBManager: ObservableObject, Identifiable {
         let parameters = [patientID, "Image_label", exerciseType, notes, "Program_score", date, "C"]
       
         //(Database_index, Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id)
-        let selectStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        let selectStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
         var selectStatementQuery: OpaquePointer?
         
         if db != nil {
@@ -78,18 +82,23 @@ class DBManager: ObservableObject, Identifiable {
                     print("failure binding name: \(errmsg)")
                     return
                 }
+                //executing the query to insert values
+                if sqlite3_step(selectStatementQuery) != SQLITE_DONE {
+                    let errmsg = String(cString: sqlite3_errmsg(db)!)
+                    print("failure inserting: \(errmsg)")
+                    print(p)
+                    return
+                }
+                print("Successfully inserted row into database!")
                 index += 1
+                sqlite3_reset(selectStatementQuery)
             }
             
-            //executing the query to insert values
-            if sqlite3_step(selectStatementQuery) != SQLITE_DONE {
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure inserting hero: \(errmsg)")
-                return
-            } else {
-                print("Successfully inserted into database!")
-            }
-            sqlite3_finalize(selectStatementQuery)
+            
+            //Finalize when ending procedure
+//            sqlite3_finalize(selectStatementQuery)
+            print(queryDB())
+            
         }
     }
 }
