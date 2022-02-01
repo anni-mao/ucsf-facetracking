@@ -41,7 +41,7 @@ struct StartSessionView: View {
                 TextField("Enter the Patient ID...",text: $patientID)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-//                    .frame(width: /*@START_MENU_TOKEN@*/350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/)
+                //                    .frame(width: 350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0)
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
@@ -50,18 +50,18 @@ struct StartSessionView: View {
                     .fontWeight(.medium)
                 
                 
-//                Text(Date.now, format: .dateTime.day().month().year())
-//                    .font(.title2)
-//                //                    .padding()
-//                //                    .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-//                //                    .frame(width: /*@START_MENU_TOKEN@*/350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/)
-//                //                    .cornerRadius(10.0)
-//                //                    .padding(.bottom, 20)
+                //                Text(Date.now, format: .dateTime.day().month().year())
+                //                    .font(.title2)
+                //                //                    .padding()
+                //                //                    .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
+                //                //                    .frame(width: 350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0)
+                //                //                    .cornerRadius(10.0)
+                //                //                    .padding(.bottom, 20)
                 
                 TextField("", text: $autoDate)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-//                    .frame(width: 350.0, height: 50.0)
+                //                    .frame(width: 350.0, height: 50.0)
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
@@ -109,7 +109,7 @@ struct StartSessionView: View {
                 TextField("Enter notes (optional)...",text: $notes)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-//                    .frame(width: 350.0, height: 50.0)
+                //                    .frame(width: 350.0, height: 50.0)
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
@@ -118,11 +118,11 @@ struct StartSessionView: View {
                     Button(action: {
                         let model:DBManager = DBManager()
                         // Set Date Format
-    //                    dateFormatter.dateFormat = .short
+                        //                    dateFormatter.dateFormat = .short
                         // Convert Date to String
                         let insertDate = dateFormatter.string(from: date)
-                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: "Dummy Exercise", notes: self.notes)
-                       
+                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
+                        
                     }) {
                         Text("Create Session")
                             .font(.title)
@@ -132,13 +132,13 @@ struct StartSessionView: View {
                             .frame(width: 250, height: 60)
                             .background(Color.blue)
                             .cornerRadius(15.0)
-    //                            .offset(x: 230)
-    //                        .alignmentGuide(.leading, computedValue: {d in d[.center]})
+                        //                            .offset(x: 230)
+                        //                        .alignmentGuide(.leading, computedValue: {d in d[.center]})
                         
                     }
                     
                 }
-               
+                
                 
                 
                 

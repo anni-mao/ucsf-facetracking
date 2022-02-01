@@ -17,6 +17,9 @@ import Photos
 
 class PhotoCaptureProcessor: NSObject {
     
+    //Added variable - anni
+    var numPhotos = 0
+    
     lazy var context = CIContext()
 
     private(set) var requestedPhotoSettings: AVCapturePhotoSettings

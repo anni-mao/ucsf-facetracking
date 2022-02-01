@@ -4,15 +4,12 @@ Patient_ID varchar(500) NOT NULL,
 Patient_data varchar(500) NOT NULL,
 Exercise_type varchar(500) NOT NULL,
 Physician_notes varchar(500) NOT NULL DEFAULT "",
-Program_score int(100) NOT NULL DEFAULT "0",
+Program_score int(100) NOT NULL DEFAULT "1",
 createdate varchar(500) NOT NULL, 
 users_id int(11) NOT NULL
 ) ;
 
 
-INSERT INTO patients_table (Database_index, Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES
-(1, '967831921', 'blank_video_2.mp4', 'A', '', 0, '2021-11-05', 1),
-(2, '967831921', 'blank_video.mp4','B', 'Testing notes', 0, '2021-11-05' 1,);
 
 
 
