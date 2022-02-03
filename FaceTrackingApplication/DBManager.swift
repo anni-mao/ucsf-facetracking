@@ -40,14 +40,8 @@ class DBManager: ObservableObject, Identifiable {
                 //step = runs compiled statement
                 //check end row
                 while sqlite3_step(selectStatementQuery) == SQLITE_ROW {
-                    //String(sqlite3_column_int(selectStatementQuery, 0))
                     let data = String(cString: sqlite3_column_text(selectStatementQuery, 0))
                     gatheredInfo.append(data)
-                    //added
-//                    let data1 = String(sqlite3_column_int(selectStatementQuery, 1))
-//                    gatheredInfo.append(data1)
-//                    let data2 = String(sqlite3_column_int(selectStatementQuery, 2))
-//                    gatheredInfo.append(data2)
                 }
                 //must ALWAYS finalize to delete compiled statement - avoids leaks
                 sqlite3_finalize(selectStatementQuery)
@@ -69,42 +63,46 @@ class DBManager: ObservableObject, Identifiable {
     //inserting into table from createsession (not the photo name or video name yet)
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
         
-        let parameters = [patientID, "Image_label", exerciseType, notes, "Program_score", date, "C"]
+        let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
         print("parameters:")
         print(parameters)
       
         
         let insertStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
-        var insertStatementQuery: OpaquePointer?
+        var insertStatement: OpaquePointer?
     
         
         if db != nil {
             //preparing the query
-           if sqlite3_prepare(db, insertStatementString, -1, &insertStatementQuery, nil) != SQLITE_OK{
+           if sqlite3_prepare(db, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK{
                let errmsg = String(cString: sqlite3_errmsg(db)!)
                print("error preparing insert: \(errmsg)")
                return
            }
-            var index:Int32 = 1
-            for p in parameters {
-                if sqlite3_bind_text(insertStatementQuery, index, p, -1, nil) != SQLITE_OK{
-                    let errmsg = String(cString: sqlite3_errmsg(db)!)
-                    print("failure binding name: \(errmsg)")
-                    return
-                }
-                //executing the query to insert values
-                if sqlite3_step(insertStatementQuery) != SQLITE_DONE {
-                    let errmsg = String(cString: sqlite3_errmsg(db)!)
-                    print("failure inserting: \(errmsg)")
-                    print(p)
-                    return
-                }
-                print("Successfully inserted row into database!")
-                index += 1
-                sqlite3_reset(insertStatementQuery)
+//            parameters[0].withCString { p1 in
+//                print(type(of: p1))
+//                sqlite3_bind_text(insertStatement, 1, p1, -1, nil)
+//            }
+
+            sqlite3_bind_text(insertStatement, 1, parameters[0].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, parameters[1].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, parameters[3].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
+//            sqlite3_bind_int(insertStatement, 4, programScore)
+            sqlite3_bind_text(insertStatement, 6, parameters[5].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 7, parameters[6].utf8String, -1, nil)
+            
+            print(type(of: parameters[4]))
+            print(type(of: parameters[5]))
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row!")
+            } else {
+                print("Could not insert row. Try again. ")
             }
-//            Finalize when ending procedure
-            sqlite3_finalize(insertStatementQuery)
+ 
+            sqlite3_finalize(insertStatement)
         
         }
         
