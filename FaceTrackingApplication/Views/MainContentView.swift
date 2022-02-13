@@ -12,7 +12,11 @@ import AVFoundation
 //Queries database and lists patient ids
 struct MainContentView: View {
     @State private var selection = 0
-
+    
+    init() {
+        //TODO change this
+        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.blue)
+    }
     
     var body: some View {
         //insert into local database

@@ -14,6 +14,7 @@
 
 import Foundation
 import Photos
+import UIKit
 
 class PhotoCaptureProcessor: NSObject {
     
@@ -99,6 +100,10 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
                     creationRequest.addResource(with: .photo, data: photoData, options: options)
                     
+                    //added by me - anni
+//                    var imageStorage = LocalFileManager()
+//                    var imageNamePath =
+//                    imageStorage.saveImage(image: UIImage(data: Data), name: imageNamePath)
                     
                 }, completionHandler: { _, error in
                     if let error = error {

@@ -104,31 +104,10 @@ struct StartSessionView: View {
                 TextField("Enter notes (optional)...",text: $notes)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-                //                    .frame(width: 350.0, height: 50.0)
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
                 
-//                NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
-//                    Button(action: {
-//                        let model:DBManager = DBManager()
-//
-//                        let insertDate = dateFormatter.string(from: date)
-//                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
-//
-//                    }) {
-//                        Text("Create Session")
-//                            .font(.title)
-//                            .fontWeight(.medium)
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .frame(width: 250, height: 60)
-//                            .background(Color.blue)
-//                            .cornerRadius(15.0)
-//                    }
-//
-//                }
-//               
                 
                 NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
                     Text("Create Session")

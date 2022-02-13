@@ -20,9 +20,11 @@ struct EndSessionView: View {
             
             Text("Please navigate to 'Camera' at the bottom right hand screen. Navigate back to end the session for the current patient.")
                 .font(.title)
+                .frame(maxWidth: .infinity, alignment: .center)
             
             Button(action: {
             
+                
                 
             }) {
                 Text("End Session for Patient " + patientID)
@@ -38,6 +40,12 @@ struct EndSessionView: View {
         
     }
 }
+
+//need to initiate count to start, count how many images are taken for this patient and only end when "End Session..." is clicked
+func startCount() {
+    
+}
+
 
 struct EndSessionView_Previews: PreviewProvider {
     static var previews: some View {

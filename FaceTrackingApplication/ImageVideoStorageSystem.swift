@@ -15,6 +15,11 @@ import UIKit
 
 class LocalFileManager {
     static let instance = LocalFileManager()
+    var currPatientID:String = ""
+    
+    func setCurrID (patientID: String) {
+        currPatientID = patientID 
+    }
     
     func saveImage(image: UIImage, name: String) {
         guard
@@ -86,7 +91,7 @@ class FileManagerViewModel: ObservableObject {
         image = UIImage(named: imageName)
     }
     
-    }
+}
 
 
 

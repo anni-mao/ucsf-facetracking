@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ListPatientsView: View {
     var model:DBManager = DBManager()
-//    var queryData:[String]?
     @State var queryData = [String]()
     @State private var searchText = ""
     
