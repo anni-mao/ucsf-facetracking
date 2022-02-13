@@ -11,6 +11,7 @@ struct PatientView: View {
     
     var patientID:String
     @State private var searchText = ""
+    //TODO: integrate in db sql query 
     //Obtain from SQLite Database
     let dates:[String] = ["08/20/21", "10/14/21"]
     let notes:[String] = ["Patient had trouble smiling.", "Patient's smile has improved."]
@@ -20,28 +21,12 @@ struct PatientView: View {
         "10/14/21" : "Patient's smile has improved."
     ]
 
-    
+
     
     var body: some View {
-      
 
         VStack(alignment: .leading) {
             List {
-//                ForEach(0..<dates.count) { i in
-//                    NavigationLink(destination: TestFolder_Views()) {
-//                        VStack(alignment: .leading, spacing: 5) {
-//                            Text(dates[i])
-//                                .font(.title2)
-//                            Text(notes[i])
-//                        }
-//                        //                                Section(header: Text(dates[i])) {
-//                        //                                    Text(notes[i])
-//                        //                                }
-//                    }
-//
-//                }
-//                var index = 0
-    
                 ForEach(searchResults, id: \.self) { d in
                     NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d)) {
                         VStack(alignment: .leading, spacing: 5) {
@@ -49,11 +34,8 @@ struct PatientView: View {
                                 .font(.title2)
                             Text(dateToNote[d] ?? "")
                         }
-                        //                               Section(header: Text(dates[i])) {
-                        //                                    Text(notes[i])
-                        //                                }
+                  
                     }
-//                    index += 1
                     
                 }
 

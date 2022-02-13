@@ -27,36 +27,28 @@ struct StartSessionView: View {
     var body: some View {
         NavigationView {
 
-            //Set current date
-            VStack (alignment: .leading, spacing: 20){
+            VStack (spacing: 20){
                 Text("Please enter the following...")
                     .font(.title2)
                     .fontWeight(.medium)
-                
-                //                    .offset(x: -50, y: -315)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 Text("Patient ID")
                     .font(.title)
                     .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 TextField("Enter the Patient ID...",text: $patientID)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-                //                    .frame(width: 350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0)
                     .cornerRadius(10.0)
                     .padding(.bottom, 20)
                 
                 Text("Date")
                     .font(.title)
                     .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-                
-                //                Text(Date.now, format: .dateTime.day().month().year())
-                //                    .font(.title2)
-                //                //                    .padding()
-                //                //                    .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
-                //                //                    .frame(width: 350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0)
-                //                //                    .cornerRadius(10.0)
-                //                //                    .padding(.bottom, 20)
                 
                 TextField("", text: $autoDate)
                     .padding()
@@ -69,6 +61,7 @@ struct StartSessionView: View {
                 Text("Exercise")
                     .font(.title)
                     .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 //create drop down menu
                 
                 
@@ -106,6 +99,8 @@ struct StartSessionView: View {
                 Text("Notes")
                     .font(.title)
                     .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 TextField("Enter notes (optional)...",text: $notes)
                     .padding()
                     .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.835))
@@ -114,32 +109,44 @@ struct StartSessionView: View {
                     .padding(.bottom, 20)
                 
                 
+//                NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
+//                    Button(action: {
+//                        let model:DBManager = DBManager()
+//
+//                        let insertDate = dateFormatter.string(from: date)
+//                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
+//
+//                    }) {
+//                        Text("Create Session")
+//                            .font(.title)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(.white)
+//                            .padding()
+//                            .frame(width: 250, height: 60)
+//                            .background(Color.blue)
+//                            .cornerRadius(15.0)
+//                    }
+//
+//                }
+//               
+                
                 NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
-                    Button(action: {
-                        let model:DBManager = DBManager()
-                        // Set Date Format
-                        //                    dateFormatter.dateFormat = .short
-                        // Convert Date to String
-                        let insertDate = dateFormatter.string(from: date)
-                        model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
-                        
-                    }) {
-                        Text("Create Session")
-                            .font(.title)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 250, height: 60)
-                            .background(Color.blue)
-                            .cornerRadius(15.0)
-                        //                            .offset(x: 230)
-                        //                        .alignmentGuide(.leading, computedValue: {d in d[.center]})
-                        
-                    }
-                    
+                    Text("Create Session")
+                        .font(.title)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 250, height: 60)
+                        .background(Color.blue)
+                        .cornerRadius(15.0)
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    let model:DBManager = DBManager()
+                    let insertDate = dateFormatter.string(from: date)
+                    model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
+                })
                 
-                
+        
                 
                 
             }

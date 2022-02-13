@@ -15,6 +15,7 @@ struct EndSessionView: View {
     var patientID: String
     
     var body: some View {
+        //TODO: start and stop count of images
         VStack {
             
             Text("Please navigate to 'Camera' at the bottom right hand screen. Navigate back to end the session for the current patient.")

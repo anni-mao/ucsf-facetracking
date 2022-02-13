@@ -15,7 +15,23 @@ class DBManager: ObservableObject, Identifiable {
     var db: OpaquePointer?
     
     //Open database connection 
+//    init() {
+//        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
+//        print(path)
+//        dbPath = path!
+//        if sqlite3_open(path, &db) == SQLITE_OK {
+//            print("Successfully opened connection to database!")
+//        } else {
+//            print("Unable to open database :(")
+//        }
+//    }
     init() {
+        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
+        dbPath = path!
+        openDB()
+    }
+    
+    func openDB() {
         let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
         print(path)
         dbPath = path!
@@ -27,8 +43,10 @@ class DBManager: ObservableObject, Identifiable {
     }
     
     //TODO fix to retrieve unique IDs
-    // retrieving patient IDs for patient ID list 
-    func queryDB() -> [String]? {
+    // retrieving patient IDs for patient ID list
+    //[String]? - was an optional
+    func queryDB() -> [String] {
+        openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
         let selectStatementString = "SELECT Patient_ID FROM patients_table;"
@@ -48,7 +66,7 @@ class DBManager: ObservableObject, Identifiable {
             } else {
                 let error_msg = String(cString: sqlite3_errmsg(db)!)
                 print("error preparing select: \(error_msg)")
-                return nil
+                return ["ERROR"]
             }
         }
         
@@ -62,7 +80,7 @@ class DBManager: ObservableObject, Identifiable {
     
     //inserting into table from createsession (not the photo name or video name yet)
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
-        
+        openDB()
         let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
         print("parameters:")
         print(parameters)
@@ -117,8 +135,7 @@ class DBManager: ObservableObject, Identifiable {
             print("Unable to open database :(")
         }
     
-        
-
+    
         print(queryDB())
     }
 }

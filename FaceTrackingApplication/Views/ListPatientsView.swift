@@ -9,19 +9,22 @@ import SwiftUI
 
 struct ListPatientsView: View {
     var model:DBManager = DBManager()
-    var queryData:[String]?
+//    var queryData:[String]?
+    @State var queryData = [String]()
     @State private var searchText = ""
     
     init() {
         queryData = model.queryDB()
     }
+    
+    //TODO: add refresh capabilities 
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(searchResults, id: \.self) { id in
                          NavigationLink(destination: PatientView(patientID: id)) {
-                        
+
                              HStack {
                                  Text("ID: ")
                                      .font(.headline)
@@ -35,6 +38,12 @@ struct ListPatientsView: View {
                 .padding()
             }
             .searchable(text: $searchText)
+            .onAppear {
+                queryData = model.queryDB()
+            }
+            .refreshable {
+                queryData = model.queryDB()
+            }
             .navigationTitle("Patients")
         }
         .accentColor(.black)
@@ -43,9 +52,10 @@ struct ListPatientsView: View {
     
     var searchResults: [String] {
             if searchText.isEmpty {
-                return queryData!
+                return queryData
+    
             } else {
-                return queryData!.filter { (id: String) -> Bool in return id.hasPrefix(searchText)
+                return queryData.filter { (id: String) -> Bool in return id.hasPrefix(searchText)
                     || searchText == "" }
             }
     }
