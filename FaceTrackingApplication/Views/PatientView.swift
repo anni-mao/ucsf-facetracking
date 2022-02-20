@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PatientView: View {
-    
+    //TODO: integrate in db sql query
+    //Obtain from SQLite Database
     var patientID:String
     @State private var searchText = ""
-    //TODO: integrate in db sql query 
-    //Obtain from SQLite Database
+    var model:DBManager = DBManager()
+    @State var queryDate = [String]()
+    @State var queryNotes = [String]()
+    
+    init(patientID: String) {
+        self.patientID = patientID
+        queryDate = model.queryDB(sqlCommand: "SELECT createdate FROM patients_table WHERE Patient_ID = '\(patientID)' ORDER BY 'date';")
+        queryNotes = model.queryDB(sqlCommand: "SELECT notes FROM patients_table WHERE Patient_ID = '\(patientID)' ORDER BY 'date';")
+    }
+    
     let dates:[String] = ["08/20/21", "10/14/21"]
     let notes:[String] = ["Patient had trouble smiling.", "Patient's smile has improved."]
     
@@ -52,9 +61,9 @@ struct PatientView: View {
     
     var searchResults: [String] {
             if searchText.isEmpty {
-                return dates
+                return queryDate
             } else {
-                return dates.filter { (id: String) -> Bool in return id.hasPrefix(searchText)
+                return queryDate.filter { (id: String) -> Bool in return id.hasPrefix(searchText)
                     || searchText == "" }
             }
     }

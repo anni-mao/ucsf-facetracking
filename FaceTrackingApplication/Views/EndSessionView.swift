@@ -14,6 +14,8 @@ struct EndSessionView: View {
     
     var patientID: String
     
+    
+    
     var body: some View {
         //TODO: start and stop count of images
         VStack {
@@ -23,7 +25,7 @@ struct EndSessionView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             
             Button(action: {
-            
+            //navigate back to start session
                 
                 
             }) {

@@ -13,10 +13,9 @@ struct ListPatientsView: View {
     @State private var searchText = ""
     
     init() {
-        queryData = model.queryDB()
+        queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
     }
     
-    //TODO: add refresh capabilities 
 
     var body: some View {
         NavigationView {
@@ -38,10 +37,10 @@ struct ListPatientsView: View {
             }
             .searchable(text: $searchText)
             .onAppear {
-                queryData = model.queryDB()
+                queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
             }
             .refreshable {
-                queryData = model.queryDB()
+                queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
             }
             .navigationTitle("Patients")
         }

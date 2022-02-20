@@ -17,6 +17,8 @@ struct TestFolder_Views: View {
     }
 }
 
+
+
 struct TestFolder_Views_Previews: PreviewProvider {
     static var previews: some View {
         TestFolder_Views(patientID: "000000", date: "10/01/21")

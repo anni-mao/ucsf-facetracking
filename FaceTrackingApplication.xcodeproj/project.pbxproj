@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2B0559B27C30159003D894D /* ft_database.db in Resources */ = {isa = PBXBuildFile; fileRef = D2B0559A27C30159003D894D /* ft_database.db */; };
 		D2B650C42782832600E440DA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650C32782832600E440DA /* LoginView.swift */; };
 		D2B650C6278412AE00E440DA /* ListPatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650C5278412AE00E440DA /* ListPatientsView.swift */; };
 		D2B650EC2787E31B00E440DA /* StartSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B650EB2787E31B00E440DA /* StartSessionView.swift */; };
@@ -25,7 +26,6 @@
 		D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */; };
 		D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */; };
 		D2EE7BF7272A6EA700EFC2D7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */; };
-		D2EE7BFA272A6EC500EFC2D7 /* ft_database.db in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */; };
 		D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */; };
 		D2EE7C00272BBBE200EFC2D7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */; };
 		D2EE7C042732517D00EFC2D7 /* PatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7C032732517D00EFC2D7 /* PatientView.swift */; };
@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2B0559A27C30159003D894D /* ft_database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ft_database.db; sourceTree = "<group>"; };
 		D2B650C32782832600E440DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D2B650C5278412AE00E440DA /* ListPatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPatientsView.swift; sourceTree = "<group>"; };
 		D2B650EB2787E31B00E440DA /* StartSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSessionView.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ft_database.db; sourceTree = "<group>"; };
 		D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ft_database.sql; sourceTree = "<group>"; };
 		D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		D2EE7C032732517D00EFC2D7 /* PatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientView.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */,
-				D2EE7BF8272A6EC500EFC2D7 /* ft_database.db */,
+				D2B0559A27C30159003D894D /* ft_database.db */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -211,9 +211,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B0559B27C30159003D894D /* ft_database.db in Resources */,
 				D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */,
 				D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */,
-				D2EE7BFA272A6EC500EFC2D7 /* ft_database.db in Resources */,
 				D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

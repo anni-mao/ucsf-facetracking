@@ -14,6 +14,7 @@ class DBManager: ObservableObject, Identifiable {
     var dbPath:String
     var db: OpaquePointer?
     
+    
     //Open database connection 
 //    init() {
 //        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
@@ -45,11 +46,11 @@ class DBManager: ObservableObject, Identifiable {
     //TODO fix to retrieve unique IDs
     // retrieving patient IDs for patient ID list
     //[String]? - was an optional
-    func queryDB() -> [String] {
+    func queryDB(sqlCommand: String) -> [String] {
         openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
-        let selectStatementString = "SELECT Patient_ID FROM patients_table;"
+        let selectStatementString = sqlCommand
         var selectStatementQuery: OpaquePointer?
         
         if db != nil {
@@ -136,7 +137,6 @@ class DBManager: ObservableObject, Identifiable {
         }
     
     
-        print(queryDB())
     }
 }
 

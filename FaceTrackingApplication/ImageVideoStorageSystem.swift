@@ -96,22 +96,4 @@ class FileManagerViewModel: ObservableObject {
 
 
 
-////Saves image/video at Documents Directory
-//func saveImageVideoDocumentDirectory(dataName: String) {
-//    let fileManager = FileManager.default
-//
-//    let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(dataName)
-//
-//    print(paths)
-//
-//    let image = UIImage(named: dataName)
-//
-//    let imageData =  image!.jpegData(compressionQuality: 0.5)
-//    fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
-//}
-//
-//func getDirectoryPath() -> String {
-//    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-//    let documentsDirectory = paths[0]
-//    return documentsDirectory
-//}
+
