@@ -12,7 +12,7 @@ struct TestFolder_Views: View {
     var date:String
     
 
-    var imagePath:String
+//    var imagePath:String
     var body: some View {
         //Pass in date and patient ID 
         //Somehow access photo library/documents to import photos?
@@ -24,6 +24,7 @@ struct TestFolder_Views: View {
 
 struct TestFolder_Views_Previews: PreviewProvider {
     static var previews: some View {
-        TestFolder_Views(patientID: "000000", date: "10/01/21", imagePath: " ")
+//        /, imagePath: " "
+        TestFolder_Views(patientID: "000000", date: "10/01/21")
     }
 }

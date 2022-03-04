@@ -108,8 +108,9 @@ struct StartSessionView: View {
                     .padding(.bottom, 20)
                 
                 
+//                EndSessionView(patientID: self.patientID)
                 
-                NavigationLink(destination: EndSessionView(patientID: self.patientID)) {
+                NavigationLink(destination: CameraView()) {
                     Text("Create Session")
                         .font(.title)
                         .fontWeight(.medium)

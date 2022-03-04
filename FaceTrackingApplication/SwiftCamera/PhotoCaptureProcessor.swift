@@ -108,6 +108,8 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     imageStorage.saveImage(image: UIImage(data: photoData)!, name: String(imageName))
                     ImageView(imageName: String(imageName))
                     
+                    
+                    
                 }, completionHandler: { _, error in
                     if let error = error {
                         print("Error occurred while saving photo to photo library: \(error)")

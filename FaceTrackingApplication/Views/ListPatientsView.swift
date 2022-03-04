@@ -14,7 +14,7 @@ struct ListPatientsView: View {
     
     init() {
         //changed
-        queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
+        queryData = model.queryDB(sqlCommand: "SELECT DISTINCT Patient_ID FROM patients_table;")
     }
     
 
@@ -36,10 +36,10 @@ struct ListPatientsView: View {
             }
             .searchable(text: $searchText)
             .onAppear {
-                queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
+                queryData = model.queryDB(sqlCommand: "SELECT DISTINCT Patient_ID FROM patients_table;")
             }
             .refreshable {
-                queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
+                queryData = model.queryDB(sqlCommand: "SELECT DISTINCT Patient_ID FROM patients_table;")
             }
             .navigationTitle("Patients")
         }

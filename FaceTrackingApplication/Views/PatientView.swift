@@ -7,18 +7,27 @@
 
 import SwiftUI
 
-func query(patientID: String, dbManager: DBManager) -> [[String?]] {
+func query(patientID: String, db: DBManager, num: Int) -> [String] {
 //    var model:DBManager = DBManager()
 //    WHERE Patient_ID = " + patientID + ";"
-    var queryNotes = dbManager.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table;")
-    print("query notes:")
-    print(queryNotes)
+    if (num == 0) {
+        var queryDates = db.query2DB(sqlCommand: "SELECT createdate FROM patients_table;")
+        return queryDates
+    } else {
+        var queryNotes = db.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table;")
+        return queryNotes
+    }
+//        print("query notes:")
+//    print(queryNotes)
+//
+//
+//    print("query dates:")
+//    print(queryDates)
+//    var arr:[[String]] = [queryDates, queryNotes]
+//    print(arr)
+//
+//    return arr
     
-    var queryDates = dbManager.query2DB(sqlCommand: "SELECT createdate FROM patients_table;")
-    print("query dates:")
-    print(queryDates)
-    
-    return [queryDates, queryNotes]
 }
 
 func dict(queryD: [String?], queryN: [String?]) -> [String? : String?]{
@@ -39,19 +48,24 @@ struct PatientView: View {
     @State private var searchText = ""
 //    var model:DBManager = DBManager()
     
-    @State var queryDates = [String?]()
-    @State var queryNotes = [String?]()
-    
-    var dateToNote:[String?:String?]
+    var queryDates = [String]()
+    var queryNotes = [String]()
+//    var dateToNote:[String?:String?]
     
     
     init(patientID: String, model:DBManager) {
         self.patientID = patientID
         self.dbManager = model
-        var queries = query(patientID: patientID, dbManager: dbManager)
-        self.queryNotes = queries[1]
-        self.queryDates = queries[0]
-        self.dateToNote = dict(queryD: queryDates, queryN: queryNotes)
+        self.queryDates = query(patientID: patientID, db: dbManager, num: 0)
+        
+        
+        self.queryNotes = query(patientID: patientID, db: dbManager, num: 1)
+//        = queries[0]
+        
+        print(queryDates)
+//        print(queries)
+        print(self.queryDates)
+//        self.dateToNote = dict(queryD: queryDates, queryN: queryNotes)
         
     }
     
@@ -71,11 +85,13 @@ struct PatientView: View {
         VStack(alignment: .leading) {
             List {
                 ForEach(searchResults, id: \.self) { d in
-                    NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d!, imagePath: "dummy_path")) {
+                    // imagePath: "dummy_path"
+                    NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d!)) {
                         VStack(alignment: .leading, spacing: 5) {
                             Text(d!)
-                                .font(.title2)
-                            Text(dateToNote[d!]! ?? "")
+                                .font(.title3)
+                            
+//                            Text(dateToNote[d!]! ?? "")
                         }
                   
                     }
@@ -95,6 +111,8 @@ struct PatientView: View {
     
     var searchResults: [String?] {
             if searchText.isEmpty {
+                print("enter here")
+                print(queryDates)
                 return queryDates
             } else {
                 return queryDates.filter { (id: String?) -> Bool in return id!.hasPrefix(searchText)
