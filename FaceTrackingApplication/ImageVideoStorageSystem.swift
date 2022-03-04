@@ -13,8 +13,12 @@ import UIKit
 //        //append to directory URL to create unqiue path
 //        let path = directory?.appendingPathComponent("\(name)")
 
-class LocalFileManager {
-    static let instance = LocalFileManager()
+
+//Notes: save image and save in sqldb 
+
+class LocalFileManager: ObservableObject {
+    //singleton method
+//    static let instance = LocalFileManager()
     var currPatientID:String = ""
     
     func setCurrID (patientID: String) {
@@ -82,16 +86,16 @@ class LocalFileManager {
 }
 
 
-class FileManagerViewModel: ObservableObject {
-    @Published var image: UIImage? = nil
-    let imageName: String = "sample-image"
-    let manager = LocalFileManager.instance
-    
-    func getImageFromFileManager() {
-        image = UIImage(named: imageName)
-    }
-    
-}
+//class FileManagerViewModel: ObservableObject {
+//    @Published var image: UIImage? = nil
+//    let imageName: String = "sample-image"
+//    let manager = LocalFileManager.instance
+//
+//    func getImageFromFileManager() {
+//        image = UIImage(named: imageName)
+//    }
+//
+//}
 
 
 

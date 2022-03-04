@@ -58,7 +58,9 @@ class DBManager: ObservableObject, Identifiable {
             if sqlite3_prepare_v2(db, selectStatementString, -1, &selectStatementQuery, nil) == SQLITE_OK {
                 //step = runs compiled statement
                 //check end row
+                
                 while sqlite3_step(selectStatementQuery) == SQLITE_ROW {
+                    //0
                     let data = String(cString: sqlite3_column_text(selectStatementQuery, 0))
                     gatheredInfo.append(data)
                 }
@@ -71,10 +73,46 @@ class DBManager: ObservableObject, Identifiable {
             }
         }
         
-        //Testing for search bar
+        sqlite3_close(db)
+        return gatheredInfo
+    }
+    
+    func query2DB(sqlCommand: String) -> [String] {
+        openDB()
+        var gatheredInfo:[String] = [String]()
+        //Patient_ID
+        let selectStatementString = sqlCommand
+        var selectStatementQuery: OpaquePointer? = nil
         
-//        gatheredInfo.append("352638273")
-//        gatheredInfo.append("234348039")
+        
+        
+        if db != nil {
+            //prepare_v2 = compiles SQL statement to byte code
+            if sqlite3_prepare_v2(db, selectStatementString, -1, &selectStatementQuery, nil) == SQLITE_OK {
+                
+                let type = sqlite3_column_type(selectStatementQuery, 3)
+                print(type)
+                //step = runs compiled statement
+                //check end row
+                while sqlite3_step(selectStatementQuery) == SQLITE_ROW {
+                    guard let data = sqlite3_column_text(selectStatementQuery, 0) else  {
+                        print("Query result is nil.")
+                        return []
+                    }
+                    gatheredInfo.append(String(cString: data))
+                    
+                }
+                //must ALWAYS finalize to delete compiled statement - avoids leaks
+                sqlite3_finalize(selectStatementQuery)
+            } else {
+                let error_msg = String(cString: sqlite3_errmsg(db)!)
+                print("error preparing select: \(error_msg)")
+                return ["ERROR"]
+            }
+        }
+        
+
+
         sqlite3_close(db)
         return gatheredInfo
     }
@@ -126,16 +164,7 @@ class DBManager: ObservableObject, Identifiable {
         }
         
         sqlite3_close(db)
-        
-        
-        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
-        dbPath = path!
-        if sqlite3_open(path, &db) == SQLITE_OK {
-            print("Successfully opened connection to database!")
-        } else {
-            print("Unable to open database :(")
-        }
-    
+
     
     }
 }

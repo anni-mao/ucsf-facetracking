@@ -15,6 +15,8 @@
 import Foundation
 import Photos
 import UIKit
+//added by anni
+import CryptoKit
 
 class PhotoCaptureProcessor: NSObject {
     
@@ -101,9 +103,10 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     creationRequest.addResource(with: .photo, data: photoData, options: options)
                     
                     //added by me - anni
-//                    var imageStorage = LocalFileManager()
-//                    var imageNamePath =
-//                    imageStorage.saveImage(image: UIImage(data: Data), name: imageNamePath)
+                    var imageStorage = LocalFileManager()
+                    var imageName = SHA256.hash(data: photoData).hashValue
+                    imageStorage.saveImage(image: UIImage(data: photoData)!, name: String(imageName))
+                    ImageView(imageName: String(imageName))
                     
                 }, completionHandler: { _, error in
                     if let error = error {

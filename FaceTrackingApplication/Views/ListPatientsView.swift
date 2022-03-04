@@ -13,6 +13,7 @@ struct ListPatientsView: View {
     @State private var searchText = ""
     
     init() {
+        //changed
         queryData = model.queryDB(sqlCommand: "SELECT Patient_ID FROM patients_table;")
     }
     
@@ -21,15 +22,13 @@ struct ListPatientsView: View {
         NavigationView {
             List {
                 ForEach(searchResults, id: \.self) { id in
-                         NavigationLink(destination: PatientView(patientID: id)) {
-
+                    NavigationLink(destination: PatientView(patientID: id, model: model)) {
                              HStack {
                                  Text("ID: ")
                                      .font(.headline)
                                  Text(id)
                              }
                              
-
                          }
                          .padding(7)
                  }

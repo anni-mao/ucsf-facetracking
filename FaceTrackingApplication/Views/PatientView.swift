@@ -7,28 +7,62 @@
 
 import SwiftUI
 
+func query(patientID: String, dbManager: DBManager) -> [[String?]] {
+//    var model:DBManager = DBManager()
+//    WHERE Patient_ID = " + patientID + ";"
+    var queryNotes = dbManager.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table;")
+    print("query notes:")
+    print(queryNotes)
+    
+    var queryDates = dbManager.query2DB(sqlCommand: "SELECT createdate FROM patients_table;")
+    print("query dates:")
+    print(queryDates)
+    
+    return [queryDates, queryNotes]
+}
+
+func dict(queryD: [String?], queryN: [String?]) -> [String? : String?]{
+    var dict = [String : String]()
+    
+    for (dates, notes) in zip(queryD, queryN) {
+        dict[dates!] = notes!
+        
+    }
+    return dict
+}
+
 struct PatientView: View {
     //TODO: integrate in db sql query
     //Obtain from SQLite Database
     var patientID:String
+    var dbManager: DBManager
     @State private var searchText = ""
-    var model:DBManager = DBManager()
-    @State var queryDate = [String]()
-    @State var queryNotes = [String]()
+//    var model:DBManager = DBManager()
     
-    init(patientID: String) {
+    @State var queryDates = [String?]()
+    @State var queryNotes = [String?]()
+    
+    var dateToNote:[String?:String?]
+    
+    
+    init(patientID: String, model:DBManager) {
         self.patientID = patientID
-        queryDate = model.queryDB(sqlCommand: "SELECT createdate FROM patients_table WHERE Patient_ID = '\(patientID)' ORDER BY 'date';")
-        queryNotes = model.queryDB(sqlCommand: "SELECT notes FROM patients_table WHERE Patient_ID = '\(patientID)' ORDER BY 'date';")
+        self.dbManager = model
+        var queries = query(patientID: patientID, dbManager: dbManager)
+        self.queryNotes = queries[1]
+        self.queryDates = queries[0]
+        self.dateToNote = dict(queryD: queryDates, queryN: queryNotes)
+        
     }
     
-    let dates:[String] = ["08/20/21", "10/14/21"]
-    let notes:[String] = ["Patient had trouble smiling.", "Patient's smile has improved."]
     
-    let dateToNote = [
-        "08/20/21" : "Patient had trouble smiling.",
-        "10/14/21" : "Patient's smile has improved."
-    ]
+//    let dates:[String] = ["08/20/21", "10/14/21"]
+//    let notes:[String] = ["Patient had trouble smiling.", "Patient's smile has improved."]
+//
+//    let dateToNote = [
+//        "08/20/21" : "Patient had trouble smiling.",
+//        "10/14/21" : "Patient's smile has improved."
+//    ]
 
 
     
@@ -37,11 +71,11 @@ struct PatientView: View {
         VStack(alignment: .leading) {
             List {
                 ForEach(searchResults, id: \.self) { d in
-                    NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d)) {
+                    NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d!, imagePath: "dummy_path")) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text(d)
+                            Text(d!)
                                 .font(.title2)
-                            Text(dateToNote[d] ?? "")
+                            Text(dateToNote[d!]! ?? "")
                         }
                   
                     }
@@ -59,11 +93,11 @@ struct PatientView: View {
         
     }
     
-    var searchResults: [String] {
+    var searchResults: [String?] {
             if searchText.isEmpty {
-                return queryDate
+                return queryDates
             } else {
-                return queryDate.filter { (id: String) -> Bool in return id.hasPrefix(searchText)
+                return queryDates.filter { (id: String?) -> Bool in return id!.hasPrefix(searchText)
                     || searchText == "" }
             }
     }
@@ -72,7 +106,7 @@ struct PatientView: View {
 
 struct PatientView_Previews: PreviewProvider {
     static var previews: some View {
-            PatientView(patientID: "00000")
+        PatientView(patientID: "00000", model: DBManager())
        
     }
 }

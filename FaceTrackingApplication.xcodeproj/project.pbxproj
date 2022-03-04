@@ -21,6 +21,7 @@
 		D2CA26BE2799F9B80087C3D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BD2799F9B80087C3D7 /* ContentView.swift */; };
 		D2CA26C0279A095C0087C3D7 /* ImageVideoStorageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26BF279A095C0087C3D7 /* ImageVideoStorageSystem.swift */; };
 		D2CA26C2279A3CE10087C3D7 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA26C1279A3CE10087C3D7 /* EndSessionView.swift */; };
+		D2CD868027D1E70500B06083 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD867F27D1E70500B06083 /* ImageView.swift */; };
 		D2EE7BE9272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */; };
 		D2EE7BEB272A6E9500EFC2D7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */; };
 		D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D22B504C27C8ABC900BD04F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D2B0559A27C30159003D894D /* ft_database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ft_database.db; sourceTree = "<group>"; };
 		D2B650C32782832600E440DA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D2B650C5278412AE00E440DA /* ListPatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPatientsView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		D2CA26BD2799F9B80087C3D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2CA26BF279A095C0087C3D7 /* ImageVideoStorageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoStorageSystem.swift; sourceTree = "<group>"; };
 		D2CA26C1279A3CE10087C3D7 /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
+		D2CD867F27D1E70500B06083 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		D2EE7BE5272A6E9500EFC2D7 /* FaceTrackingApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceTrackingApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingApplicationApp.swift; sourceTree = "<group>"; };
 		D2EE7BEA272A6E9500EFC2D7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		D2EE7BE7272A6E9500EFC2D7 /* FaceTrackingApplication */ = {
 			isa = PBXGroup;
 			children = (
+				D22B504C27C8ABC900BD04F5 /* Info.plist */,
 				D2EE7BE8272A6E9500EFC2D7 /* FaceTrackingApplicationApp.swift */,
 				D2EE7C052733B02C00EFC2D7 /* Views */,
 				D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */,
@@ -143,6 +147,7 @@
 				D2EE7C032732517D00EFC2D7 /* PatientView.swift */,
 				D2B650C32782832600E440DA /* LoginView.swift */,
 				D2EE7C062733B04F00EFC2D7 /* TestFolder Views.swift */,
+				D2CD867F27D1E70500B06083 /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EE7C042732517D00EFC2D7 /* PatientView.swift in Sources */,
+				D2CD868027D1E70500B06083 /* ImageView.swift in Sources */,
 				D2CA26BE2799F9B80087C3D7 /* ContentView.swift in Sources */,
 				D2B650C6278412AE00E440DA /* ListPatientsView.swift in Sources */,
 				D2EE7BEB272A6E9500EFC2D7 /* MainContentView.swift in Sources */,
@@ -376,7 +382,9 @@
 				DEVELOPMENT_TEAM = P5DSZ9BLH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FaceTrackingApplication/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos & videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saves photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -406,7 +414,9 @@
 				DEVELOPMENT_TEAM = P5DSZ9BLH5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FaceTrackingApplication/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos & videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saves photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
