@@ -27,7 +27,6 @@
 		D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEC272A6E9700EFC2D7 /* Assets.xcassets */; };
 		D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BEF272A6E9700EFC2D7 /* Preview Assets.xcassets */; };
 		D2EE7BF7272A6EA700EFC2D7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BF6272A6EA700EFC2D7 /* DBManager.swift */; };
-		D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */ = {isa = PBXBuildFile; fileRef = D2EE7BF9272A6EC500EFC2D7 /* ft_database.sql */; };
 		D2EE7C00272BBBE200EFC2D7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7BFF272BBBE200EFC2D7 /* SearchBar.swift */; };
 		D2EE7C042732517D00EFC2D7 /* PatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7C032732517D00EFC2D7 /* PatientView.swift */; };
 		D2EE7C072733B04F00EFC2D7 /* TestFolder Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE7C062733B04F00EFC2D7 /* TestFolder Views.swift */; };
@@ -219,7 +218,6 @@
 				D2B0559B27C30159003D894D /* ft_database.db in Resources */,
 				D2EE7BF0272A6E9700EFC2D7 /* Preview Assets.xcassets in Resources */,
 				D2EE7BED272A6E9700EFC2D7 /* Assets.xcassets in Resources */,
-				D2EE7BFB272A6EC500EFC2D7 /* ft_database.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

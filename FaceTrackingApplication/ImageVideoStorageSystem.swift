@@ -26,6 +26,7 @@ class LocalFileManager: ObservableObject {
     }
     
     func saveImage(image: UIImage, name: String) {
+        print("save Image???")
         guard
             let data = image.jpegData(compressionQuality: 1.0),
         let path = getPathForImage(name: name) else {

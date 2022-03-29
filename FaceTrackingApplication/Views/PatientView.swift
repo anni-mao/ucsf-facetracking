@@ -11,22 +11,12 @@ func query(patientID: String, db: DBManager, num: Int) -> [String] {
 //    var model:DBManager = DBManager()
 //    WHERE Patient_ID = " + patientID + ";"
     if (num == 0) {
-        var queryDates = db.query2DB(sqlCommand: "SELECT createdate FROM patients_table;")
+        var queryDates = db.query2DB(sqlCommand: "SELECT createdate FROM patients_table WHERE Patient_ID = " + patientID + ";")
         return queryDates
     } else {
-        var queryNotes = db.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table;")
+        var queryNotes = db.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table WHERE Patient_ID = " + patientID + ";")
         return queryNotes
     }
-//        print("query notes:")
-//    print(queryNotes)
-//
-//
-//    print("query dates:")
-//    print(queryDates)
-//    var arr:[[String]] = [queryDates, queryNotes]
-//    print(arr)
-//
-//    return arr
     
 }
 
@@ -69,14 +59,7 @@ struct PatientView: View {
         
     }
     
-    
-//    let dates:[String] = ["08/20/21", "10/14/21"]
-//    let notes:[String] = ["Patient had trouble smiling.", "Patient's smile has improved."]
-//
-//    let dateToNote = [
-//        "08/20/21" : "Patient had trouble smiling.",
-//        "10/14/21" : "Patient's smile has improved."
-//    ]
+
 
 
     
@@ -111,7 +94,6 @@ struct PatientView: View {
     
     var searchResults: [String?] {
             if searchText.isEmpty {
-                print("enter here")
                 print(queryDates)
                 return queryDates
             } else {

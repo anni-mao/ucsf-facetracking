@@ -15,39 +15,67 @@ class DBManager: ObservableObject, Identifiable {
     var db: OpaquePointer?
     
     
-    //Open database connection 
-//    init() {
-//        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
-//        print(path)
-//        dbPath = path!
-//        if sqlite3_open(path, &db) == SQLITE_OK {
-//            print("Successfully opened connection to database!")
-//        } else {
-//            print("Unable to open database :(")
-//        }
-//    }
+
     init() {
         let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
         dbPath = path!
+        copyDatabaseIfNeeded()
         openDB()
+        
     }
     
     func openDB() {
-        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
-        print(path)
-        dbPath = path!
-        if sqlite3_open(path, &db) == SQLITE_OK {
+//        let path = Bundle.main.path(forResource: "ft_database", ofType: "db")
+//        print(path)
+//        dbPath = path!
+        print("new path:")
+        print(dbPath)
+        if sqlite3_open(dbPath, &db) == SQLITE_OK {
             print("Successfully opened connection to database!")
+            print(db)
         } else {
             print("Unable to open database :(")
         }
     }
     
+    
+    func copyDatabaseIfNeeded() {
+            // Move database file from bundle to documents folder
+            
+            let fileManager = FileManager.default
+            
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                        in: .userDomainMask)
+            
+            guard documentsUrl.count != 0 else {
+                return // Could not find documents URL
+            }
+            
+            let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("ft_database.db")
+        
+            if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
+                print("DB does not exist in documents folder")
+                
+                let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("ft_database.db")
+                
+                do {
+                      try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
+                      } catch let error as NSError {
+                        print("Couldn't copy file to final location! Error:\(error.description)")
+                }
+
+            } else {
+                print("Database file found at path: \(finalDatabaseURL.path)")
+                dbPath = finalDatabaseURL.path
+            }
+        
+        }
+    
     //TODO fix to retrieve unique IDs
     // retrieving patient IDs for patient ID list
     //[String]? - was an optional
     func queryDB(sqlCommand: String) -> [String] {
-        openDB()
+//        openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
         let selectStatementString = sqlCommand
@@ -55,6 +83,7 @@ class DBManager: ObservableObject, Identifiable {
         
         if db != nil {
             //prepare_v2 = compiles SQL statement to byte code
+            print(db)
             if sqlite3_prepare_v2(db, selectStatementString, -1, &selectStatementQuery, nil) == SQLITE_OK {
                 //step = runs compiled statement
                 //check end row
@@ -64,12 +93,13 @@ class DBManager: ObservableObject, Identifiable {
                     let data = String(cString: sqlite3_column_text(selectStatementQuery, 0))
                     gatheredInfo.append(data)
                 }
+                sqlite3_reset(selectStatementQuery)
                 //must ALWAYS finalize to delete compiled statement - avoids leaks
                 sqlite3_finalize(selectStatementQuery)
             } else {
                 let error_msg = String(cString: sqlite3_errmsg(db)!)
                 print("error preparing select: \(error_msg)")
-                return ["ERROR"]
+//                return ["ERROR"]
             }
         }
         
@@ -78,7 +108,7 @@ class DBManager: ObservableObject, Identifiable {
     }
     
     func query2DB(sqlCommand: String) -> [String] {
-        openDB()
+//        openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
         let selectStatementString = sqlCommand
@@ -102,6 +132,7 @@ class DBManager: ObservableObject, Identifiable {
                     gatheredInfo.append(String(cString: data))
                     
                 }
+                sqlite3_reset(selectStatementQuery)
                 //must ALWAYS finalize to delete compiled statement - avoids leaks
                 sqlite3_finalize(selectStatementQuery)
             } else {
@@ -119,7 +150,7 @@ class DBManager: ObservableObject, Identifiable {
     
     //inserting into table from createsession (not the photo name or video name yet)
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
-        openDB()
+//        openDB()
         let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
         print("parameters:")
         print(parameters)
@@ -146,19 +177,17 @@ class DBManager: ObservableObject, Identifiable {
             sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 4, parameters[3].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
-//            sqlite3_bind_int(insertStatement, 4, programScore)
             sqlite3_bind_text(insertStatement, 6, parameters[5].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 7, parameters[6].utf8String, -1, nil)
-            
-            print(type(of: parameters[4]))
-            print(type(of: parameters[5]))
+
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row!")
             } else {
                 print("Could not insert row. Try again. ")
+            
             }
- 
+            sqlite3_reset(insertStatement)
             sqlite3_finalize(insertStatement)
         
         }

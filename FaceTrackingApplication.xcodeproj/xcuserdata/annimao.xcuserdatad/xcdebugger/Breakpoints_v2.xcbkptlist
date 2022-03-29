@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0D78CFB8-6B0B-4823-BCF2-F40AB50136F4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceTrackingApplication/Views/ImageView.swift"
@@ -62,8 +62,8 @@
             filePath = "FaceTrackingApplication/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "query2DB(sqlCommand:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,10 +78,88 @@
             filePath = "FaceTrackingApplication/DBManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "query2DB(sqlCommand:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "573F5889-66F1-499E-A218-1D8791E71425"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FaceTrackingApplication/ImageVideoStorageSystem.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "573F5889-66F1-499E-A218-1D8791E71425 - 1da73d21c05d71a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FaceTrackingApplication.FileManagerViewModel.deinit"
+                  moduleName = "FaceTrackingApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/annimao/UCSF_FTApp/FaceTrackingApplication/ImageVideoStorageSystem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "573F5889-66F1-499E-A218-1D8791E71425 - 412307c5d05ef31f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FaceTrackingApplication.FileManagerViewModel.__deallocating_deinit"
+                  moduleName = "FaceTrackingApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/annimao/UCSF_FTApp/FaceTrackingApplication/ImageVideoStorageSystem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "573F5889-66F1-499E-A218-1D8791E71425 - 97977132e89fb3b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FaceTrackingApplication.FileManagerViewModel.__allocating_init() -&gt; FaceTrackingApplication.FileManagerViewModel"
+                  moduleName = "FaceTrackingApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/annimao/UCSF_FTApp/FaceTrackingApplication/ImageVideoStorageSystem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  uuid = "573F5889-66F1-499E-A218-1D8791E71425 - 6729fb2e4a4067a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FaceTrackingApplication.FileManagerViewModel.init() -&gt; FaceTrackingApplication.FileManagerViewModel"
+                  moduleName = "FaceTrackingApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/annimao/UCSF_FTApp/FaceTrackingApplication/ImageVideoStorageSystem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "73">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

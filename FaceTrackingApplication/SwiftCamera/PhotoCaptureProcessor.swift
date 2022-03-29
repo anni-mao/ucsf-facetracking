@@ -20,8 +20,6 @@ import CryptoKit
 
 class PhotoCaptureProcessor: NSObject {
     
-    //Added variable - anni
-    var numPhotos = 0
     
     lazy var context = CIContext()
 
@@ -103,10 +101,12 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     creationRequest.addResource(with: .photo, data: photoData, options: options)
                     
                     //added by me - anni
-                    var imageStorage = LocalFileManager()
-                    var imageName = SHA256.hash(data: photoData).hashValue
-                    imageStorage.saveImage(image: UIImage(data: photoData)!, name: String(imageName))
-                    ImageView(imageName: String(imageName))
+                    let imageStorage = LocalFileManager()
+//                    var imageName = SHA256.hash(data: photoData).hashValue
+                    print("save TO PHOTO")
+                    let imageName = "PhotoTesterSave1"
+                    imageStorage.saveImage(image: UIImage(data: photoData)!, name: imageName)
+                    ImageView(imageName: imageName)
                     
                     
                     
