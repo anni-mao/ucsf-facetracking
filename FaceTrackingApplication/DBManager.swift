@@ -14,6 +14,8 @@ class DBManager: ObservableObject, Identifiable {
     var dbPath:String
     var db: OpaquePointer?
     
+   
+    static let globalDB = DBManager()
     
 
     init() {
@@ -75,7 +77,7 @@ class DBManager: ObservableObject, Identifiable {
     // retrieving patient IDs for patient ID list
     //[String]? - was an optional
     func queryDB(sqlCommand: String) -> [String] {
-//        openDB()
+        openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
         let selectStatementString = sqlCommand
@@ -108,7 +110,7 @@ class DBManager: ObservableObject, Identifiable {
     }
     
     func query2DB(sqlCommand: String) -> [String] {
-//        openDB()
+        openDB()
         var gatheredInfo:[String] = [String]()
         //Patient_ID
         let selectStatementString = sqlCommand
@@ -150,7 +152,7 @@ class DBManager: ObservableObject, Identifiable {
     
     //inserting into table from createsession (not the photo name or video name yet)
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
-//        openDB()
+        openDB()
         let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
         print("parameters:")
         print(parameters)

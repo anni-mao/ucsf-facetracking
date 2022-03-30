@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ListPatientsView: View {
-    var model:DBManager = DBManager()
+    var model = DBManager.globalDB
     @State var queryData = [String]()
     @State private var searchText = ""
     
     init() {
         //changed
+        print("select")
+        print(model)
         queryData = model.queryDB(sqlCommand: "SELECT DISTINCT Patient_ID FROM patients_table;")
+        
     }
     
 

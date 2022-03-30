@@ -121,7 +121,8 @@ struct StartSessionView: View {
                         .cornerRadius(15.0)
                 }
                 .simultaneousGesture(TapGesture().onEnded{
-                    let model:DBManager = DBManager()
+                    let model = DBManager.globalDB
+                    print(model)
                     let insertDate = dateFormatter.string(from: date)
                     model.insertDB(patientID: self.patientID, date: insertDate, exerciseType: self.selectedExercise, notes: self.notes)
                 })
