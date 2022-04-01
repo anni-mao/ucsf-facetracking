@@ -7,24 +7,53 @@
 
 import SwiftUI
 
-struct TestFolder_Views: View {
+struct PullImage_Views: View {
     var patientID:String
     var date:String
+    var imageNames:[String]
+    var UIImages:[UIImage] = [UIImage]()
     
+    
+    init(pID:String, d:String) {
+        self.patientID = pID
+        self.date = d
+        let db = DBManager.globalDB
+        self.imageNames = db.query2DB(sqlCommand: "SELECT Patient_data FROM patients_table WHERE Patient_ID = " + patientID + " AND createdate IS NOT NULL AND Patient_data IS NOT NULL AND users_id IS NULL;")
+        print("Image Names")
+        print(imageNames)
+        let fM = LocalFileManager.FM
+        for name in self.imageNames {
+            self.UIImages.append(fM.getImage(name: name)!)
+            
+        }
+        print("UIImages")
+        print(UIImages)
+        
+    }
 
 //    var imagePath:String
     var body: some View {
         //Pass in date and patient ID 
         //Somehow access photo library/documents to import photos?
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ForEach(UIImages, id: \.self) { img in
+                Image(uiImage: img)
+                    .resizable()
+
+            }
+
+        }
+        
+        
+        
     }
 }
 
 
 
-struct TestFolder_Views_Previews: PreviewProvider {
+struct PullImage_Views_Previews: PreviewProvider {
     static var previews: some View {
 //        /, imagePath: " "
-        TestFolder_Views(patientID: "000000", date: "10/01/21")
+        PullImage_Views(pID: "000000", d: "10/01/21")
     }
 }

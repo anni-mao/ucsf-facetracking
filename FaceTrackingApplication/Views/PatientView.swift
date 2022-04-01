@@ -72,7 +72,7 @@ struct PatientView: View {
                     //TestFolder_Views(patientID: patientID, date: d!)
                     
 //                    ImageView(imageName: "testing")
-                    NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d!)) {
+                    NavigationLink(destination: PullImage_Views(pID: patientID, d: d!)) {
                         VStack(alignment: .leading, spacing: 5) {
                             Text(d!)
                                 .font(.title3)

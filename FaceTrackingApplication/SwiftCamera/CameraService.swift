@@ -473,8 +473,8 @@ public class CameraService {
                         //save in db
                         let db = DBManager.globalDB
                         db.insertImage(patientID: patientID, date: date, imageName: imageName)
-                    
                         ImageView(imageName: imageName)
+                        
                     } else {
                         print("No photo data")
                     }

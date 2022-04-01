@@ -122,8 +122,8 @@ class DBManager: ObservableObject, Identifiable {
             //prepare_v2 = compiles SQL statement to byte code
             if sqlite3_prepare_v2(db, selectStatementString, -1, &selectStatementQuery, nil) == SQLITE_OK {
                 
-                let type = sqlite3_column_type(selectStatementQuery, 3)
-                print(type)
+//                let type = sqlite3_column_type(selectStatementQuery, 3)
+//                print(type)
                 //step = runs compiled statement
                 //check end row
                 while sqlite3_step(selectStatementQuery) == SQLITE_ROW {
@@ -153,12 +153,16 @@ class DBManager: ObservableObject, Identifiable {
     //inserting into table from createsession (not the photo name or video name yet)
     func insertDB(patientID: String, date: String, exerciseType: String, notes: String) {
         openDB()
-        let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
+//        let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
+        
+        let parameters = [patientID as NSString, exerciseType as NSString, notes as NSString, date as NSString, "Clinician" as NSString]
         print("parameters:")
         print(parameters)
       
         
-        let insertStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
+//        let insertStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, Exercise_type, Physician_notes, Program_score, createdate, users_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        
+        let insertStatementString = "INSERT INTO patients_table (Patient_ID, Exercise_type, Physician_notes, createdate, users_id) VALUES (?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer?
     
         
@@ -175,12 +179,12 @@ class DBManager: ObservableObject, Identifiable {
 //            }
 
             sqlite3_bind_text(insertStatement, 1, parameters[0].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 2, parameters[1].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 2, parameters[1].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 4, parameters[3].utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 6, parameters[5].utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 7, parameters[6].utf8String, -1, nil)
 
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
@@ -229,7 +233,7 @@ class DBManager: ObservableObject, Identifiable {
 //            sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
 //            sqlite3_bind_text(insertStatement, 4, parameters[3].utf8String, -1, nil)
 //            sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 6, parameters[2].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
 //            sqlite3_bind_text(insertStatement, 7, parameters[6].utf8String, -1, nil)
 
             
