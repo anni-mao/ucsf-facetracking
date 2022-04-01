@@ -11,7 +11,7 @@ func query(patientID: String, db: DBManager, num: Int) -> [String] {
 //    var model:DBManager = DBManager()
 //    WHERE Patient_ID = " + patientID + ";"
     if (num == 0) {
-        var queryDates = db.query2DB(sqlCommand: "SELECT createdate FROM patients_table WHERE Patient_ID = " + patientID + ";")
+        var queryDates = db.query2DB(sqlCommand: "SELECT createdate FROM patients_table WHERE Patient_ID = " + patientID + " AND createdate IS NOT NULL;")
         return queryDates
     } else {
         var queryNotes = db.query2DB(sqlCommand: "SELECT Physician_notes FROM patients_table WHERE Patient_ID = " + patientID + ";")
@@ -69,6 +69,9 @@ struct PatientView: View {
             List {
                 ForEach(searchResults, id: \.self) { d in
                     // imagePath: "dummy_path"
+                    //TestFolder_Views(patientID: patientID, date: d!)
+                    
+//                    ImageView(imageName: "testing")
                     NavigationLink(destination: TestFolder_Views(patientID: patientID, date: d!)) {
                         VStack(alignment: .leading, spacing: 5) {
                             Text(d!)

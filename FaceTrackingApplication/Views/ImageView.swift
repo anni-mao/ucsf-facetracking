@@ -14,7 +14,7 @@ struct ImageView: View {
     var image: UIImage
     
     init(imageName: String) {
-        let fM = LocalFileManager()
+        let fM = LocalFileManager.FM
         image = fM.getImage(name: imageName)!
     }
     var body: some View {

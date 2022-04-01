@@ -36,7 +36,7 @@ struct MainContentView: View {
                 }
                 .tag(1)
 
-            CameraView()
+            CameraView(patientID: "XXXX", date: "XXXX")
                 .tabItem {
                     Image(systemName: "camera.fill")
                     Text("Camera")

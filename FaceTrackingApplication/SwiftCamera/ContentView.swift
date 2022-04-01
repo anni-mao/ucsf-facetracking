@@ -66,9 +66,9 @@ final class CameraModel: ObservableObject {
         service.checkForPermissions()
         service.configure()
     }
-    
-    func capturePhoto() {
-        service.capturePhoto()
+    //added by anni
+    func capturePhoto(patientID:String, date:String) {
+        service.capturePhoto(patientID: patientID, date: date)
     }
     
     func flipCamera() {
@@ -85,13 +85,19 @@ final class CameraModel: ObservableObject {
 }
 
 struct CameraView: View {
+    
+    //added by anni
+    var patientID:String
+    var date:String
+    
     @StateObject var model = CameraModel()
     
     @State var currentZoomFactor: CGFloat = 1.0
     
     var captureButton: some View {
         Button(action: {
-            model.capturePhoto()
+            //added by anni
+            model.capturePhoto(patientID: patientID, date: date)
         }, label: {
             Circle()
                 .foregroundColor(.white)
@@ -206,6 +212,6 @@ struct CameraView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView()
+        CameraView(patientID: "XXXXX", date: "XXXX")
     }
 }

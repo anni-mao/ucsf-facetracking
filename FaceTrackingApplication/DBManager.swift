@@ -198,5 +198,55 @@ class DBManager: ObservableObject, Identifiable {
 
     
     }
+    
+    
+    func insertImage(patientID: String, date: String, imageName: String) {
+        openDB()
+//        let parameters = [patientID as NSString, "Img_Name" as NSString, exerciseType as NSString, notes as NSString, "95" as NSString, date as NSString, "Clinician" as NSString]
+        let parameters = [patientID as NSString, imageName as NSString, date as NSString]
+        print("parameters:")
+        print(parameters)
+      
+        
+        let insertStatementString = "INSERT INTO patients_table (Patient_ID, Patient_data, createdate) VALUES (?, ?, ?);"
+        var insertStatement: OpaquePointer?
+    
+        
+        if db != nil {
+            //preparing the query
+           if sqlite3_prepare(db, insertStatementString, -1, &insertStatement, nil) != SQLITE_OK{
+               let errmsg = String(cString: sqlite3_errmsg(db)!)
+               print("error preparing insert: \(errmsg)")
+               return
+           }
+//            parameters[0].withCString { p1 in
+//                print(type(of: p1))
+//                sqlite3_bind_text(insertStatement, 1, p1, -1, nil)
+//            }
+
+            sqlite3_bind_text(insertStatement, 1, parameters[0].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, parameters[1].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 3, parameters[2].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 4, parameters[3].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 5, parameters[4].utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 6, parameters[2].utf8String, -1, nil)
+//            sqlite3_bind_text(insertStatement, 7, parameters[6].utf8String, -1, nil)
+
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row!")
+            } else {
+                print("Could not insert row. Try again. ")
+            
+            }
+            sqlite3_reset(insertStatement)
+            sqlite3_finalize(insertStatement)
+        
+        }
+        
+        sqlite3_close(db)
+
+    
+    }
 }
 

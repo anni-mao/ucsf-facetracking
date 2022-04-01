@@ -100,13 +100,13 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
                     creationRequest.addResource(with: .photo, data: photoData, options: options)
                     
-                    //added by me - anni
-                    let imageStorage = LocalFileManager()
+//                    //added by me - anni
+//                    let imageStorage = LocalFileManager.FM
 //                    var imageName = SHA256.hash(data: photoData).hashValue
-                    print("save TO PHOTO")
-                    let imageName = "PhotoTesterSave1"
-                    imageStorage.saveImage(image: UIImage(data: photoData)!, name: imageName)
-                    ImageView(imageName: imageName)
+//                    print("save TO PHOTO")
+////                    let imageName = "PhotoTesterSave1"
+//                    imageStorage.saveImage(image: UIImage(data: photoData)!, name: String(imageName))
+//                    ImageView(imageName: String(imageName))
                     
                     
                     

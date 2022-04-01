@@ -18,7 +18,7 @@ import UIKit
 
 class LocalFileManager: ObservableObject {
     //singleton method
-//    static let instance = LocalFileManager()
+    static let FM = LocalFileManager()
     var currPatientID:String = ""
     
     func setCurrID (patientID: String) {

@@ -18,6 +18,9 @@ import AVFoundation
 import Photos
 import UIKit
 
+//added by anni
+import CryptoKit
+
 //  MARK: Class Camera Service, handles setup of AVFoundation needed for a basic camera app.
 public struct Photo: Identifiable, Equatable {
 //    The ID of the captured photo
@@ -411,9 +414,10 @@ public class CameraService {
     }
     
     //    MARK: Capture Photo
+    //added by anni
     
     /// - Tag: CapturePhoto
-    public func capturePhoto() {
+    public func capturePhoto(patientID:String, date:String) {
         if self.setupResult != .configurationFailed {
             self.isCameraButtonDisabled = true
             
@@ -457,6 +461,20 @@ public class CameraService {
                     if let data = photoCaptureProcessor.photoData {
                         self?.photo = Photo(originalData: data)
                         print("passing photo")
+                        
+                        //added by me - anni
+                        let imageStorage = LocalFileManager.FM
+                        let imageName = String(SHA256.hash(data: (self?.photo?.compressedData)!).hashValue)
+//                        var imageName = String(self?.photo?.id)
+                        print("save TO PHOTO")
+    //                    let imageName = "PhotoTesterSave1"
+                        imageStorage.saveImage(image: (self?.photo?.image)!, name: imageName)
+                        
+                        //save in db
+                        let db = DBManager.globalDB
+                        db.insertImage(patientID: patientID, date: date, imageName: imageName)
+                    
+                        ImageView(imageName: imageName)
                     } else {
                         print("No photo data")
                     }
